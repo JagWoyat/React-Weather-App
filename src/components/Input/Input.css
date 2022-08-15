@@ -1,0 +1,22 @@
+.InputWrapper {
+    display: flex;
+    background-color: lightgray;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 250px;
+    height: 30px;
+    margin: 3px;
+}
+
+.input {
+    padding: 5px 15px;
+    font-size: 16px;
+    background: none;
+    border: 0px;
+    width: 200px;
+    height: 30px;
+    outline: none;
+    letter-spacing: 1px;
+    color: black;
+}
+

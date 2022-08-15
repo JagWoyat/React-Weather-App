@@ -1,0 +1,16 @@
+.OptionWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 650px;
+    height: 60px;
+    margin: 0px;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.Button {
+    display: flex;
+    align-self: center;
+    bottom: 5px;
+    right: 5px;
+}

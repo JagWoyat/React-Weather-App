@@ -1,14 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import Root from './App';
 import reportWebVitals from './reportWebVitals';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import geocodingSlice from './features/geocodingSlice';
+import weatherSlice from './features/weatherSlice';
+
+const store = configureStore({
+  reducer: {
+    city: geocodingSlice,
+    weather: weatherSlice,
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Provider store={store}>
+    <React.StrictMode>
+      <Root />
+    </React.StrictMode>
+  </Provider>,
 );
 
 // If you want to start measuring performance in your app, pass a function
