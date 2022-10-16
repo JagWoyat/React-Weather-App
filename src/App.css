@@ -11,6 +11,7 @@
     border: 2px solid black;
     padding: 5px;
     box-shadow: 5px 10px #888888;
+    overflow:hidden; 
 }
 
 .ForecastWrapper {

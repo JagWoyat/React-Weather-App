@@ -11,6 +11,7 @@ import Selector from './components/Selector/Selector';
 import Input from './components/Input/Input';
 import './App.css';
 import { useState } from 'react';
+import Slider from './components/Slider/Slider';
 
 function App() {
   const dispatch = useDispatch();
@@ -44,23 +45,7 @@ function App() {
             <h2>Current temperature: {currentWeather.main.temp} °C</h2>
             <div>
               <h2>Temperature forecast</h2>
-              <div className="ForecastWrapper">
-                <div>
-                  <h3>Temperature: {forecastWeather.list[1].main.temp} °C</h3>
-                  <h3>Weather: {forecastWeather.list[1].weather[0].main}</h3>
-                  <h3>Date: {forecastWeather.list[1].dt_txt}</h3>
-                </div>
-                <div>
-                  <h3>Temperature: {forecastWeather.list[2].main.temp} °C</h3>
-                  <h3>Weather: {forecastWeather.list[2].weather[0].main}</h3>
-                  <h3>Date: {forecastWeather.list[2].dt_txt}</h3>
-                </div>
-                <div>
-                  <h3>Temperature: {forecastWeather.list[3].main.temp} °C</h3>
-                  <h3>Weather: {forecastWeather.list[3].weather[0].main}</h3>
-                  <h3>Date: {forecastWeather.list[3].dt_txt}</h3>
-                </div>
-              </div>
+              <Slider />
             </div>
           </div>
         )}
