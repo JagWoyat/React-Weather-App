@@ -6,11 +6,13 @@ import {
   getCurrentWeather,
   getForecast,
   getForecastStatus,
+  getIndex,
 } from './features/weatherSlice';
 import Selector from './components/Selector/Selector';
 import Input from './components/Input/Input';
 import './App.css';
 import { useState } from 'react';
+import Slider from './components/Slider/Slider';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +20,8 @@ function App() {
   const geoAPI = useSelector(getCities);
   const chosenCity = useSelector(getChosenCity);
   const currentWeather = useSelector(getCurrentWeather);
-  const forecastWeather = useSelector(getForecast);
+  const forecasts = useSelector(getForecast);
+  const getI = useSelector(getIndex);
 
   const getStatus = useSelector(getGeoStatus);
   const currentWeatherStatus = useSelector(getCurrentStatus);
@@ -30,7 +33,7 @@ function App() {
     <div>
       <h1>Weather App</h1>
       <div className="Wrapper">
-        <div>
+        <div style={{ margin: '5px' }}>
           <Input
             placeholder="City name"
             setCityInput={setCityInput}
@@ -38,32 +41,27 @@ function App() {
           />
           {getStatus === 'succeeded' && <Selector cityData={geoAPI} />}
         </div>
-        {forecastStatus === 'succeeded' && currentWeatherStatus === 'succeeded' && (
-          <div className="WeatherWrapper">
-            <h1>{chosenCity.name}</h1>
-            <h2>Current temperature: {currentWeather.main.temp} °C</h2>
-            <div>
-              <h2>Temperature forecast</h2>
-              <div className="ForecastWrapper">
-                <div>
-                  <h3>Temperature: {forecastWeather.list[1].main.temp} °C</h3>
-                  <h3>Weather: {forecastWeather.list[1].weather[0].main}</h3>
-                  <h3>Date: {forecastWeather.list[1].dt_txt}</h3>
-                </div>
-                <div>
-                  <h3>Temperature: {forecastWeather.list[2].main.temp} °C</h3>
-                  <h3>Weather: {forecastWeather.list[2].weather[0].main}</h3>
-                  <h3>Date: {forecastWeather.list[2].dt_txt}</h3>
-                </div>
-                <div>
-                  <h3>Temperature: {forecastWeather.list[3].main.temp} °C</h3>
-                  <h3>Weather: {forecastWeather.list[3].weather[0].main}</h3>
-                  <h3>Date: {forecastWeather.list[3].dt_txt}</h3>
-                </div>
+        {forecastStatus === 'succeeded' &&
+          currentWeatherStatus === 'succeeded' &&
+          (getI === 0 ? (
+            <div className="WeatherWrapper">
+              <h1>{chosenCity.name}</h1>
+              <h2>Current temperature: {currentWeather.main.temp} °C</h2>
+              <div>
+                <h2>Temperature forecast</h2>
+                <Slider />
               </div>
             </div>
-          </div>
-        )}
+          ) : (
+            <div className="WeatherWrapper">
+              <h1>{chosenCity.name}</h1>
+              <h2>Current temperature: {forecasts.list[getI].main.temp} °C</h2>
+              <div>
+                <h2>Temperature forecast</h2>
+                <Slider />
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );

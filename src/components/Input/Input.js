@@ -9,6 +9,11 @@ export default function Input({ placeholder, setCityInput, func }) {
         className="input"
         placeholder={placeholder}
         onChange={(event) => setCityInput(event.target.value)}
+        onKeyPress={(event) => {
+          if (event.code === 'Enter') {
+            func();
+          }
+        }}
       />
       <Icon icon={glass} onClick={func} />
     </div>

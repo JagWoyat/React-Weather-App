@@ -8,6 +8,7 @@ const initialState = {
   status: {
     current: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
     forecast: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+    index: 0,
   },
   error: null,
 };
@@ -32,6 +33,9 @@ export const weatherSlice = createSlice({
   reducers: {
     addCity: (state, action) => {
       state.city = action.payload;
+    },
+    changeIndex: (state, action) => {
+      state.status.index = action.payload;
     },
   },
   extraReducers(builder) {
@@ -68,6 +72,8 @@ export const getCurrentWeather = (state) => state.weather.current;
 export const getForecast = (state) => state.weather.forecast;
 export const getCurrentStatus = (state) => state.weather.status.current;
 export const getForecastStatus = (state) => state.weather.status.forecast;
+export const getIndex = (state) => state.weather.status.index;
 export const getWeatherError = (state) => state.weather.error;
 
 export const { addCity } = weatherSlice.actions;
+export const { changeIndex } = weatherSlice.actions;
