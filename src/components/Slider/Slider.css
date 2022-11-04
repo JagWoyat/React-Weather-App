@@ -1,5 +1,23 @@
+.SliderWrapper {
+    display: grid;
+    grid-template-columns: 40px 500px 40px;
+}
+
 .Slider {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    position: relative;
+    left: 50px;
+    z-index: 0;
+}
+
+.Butt {
+    width: 70px;
+    height: 130px;
+    position: relative;
+    z-index: 9999;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: 20%;
 }

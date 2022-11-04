@@ -1,14 +1,13 @@
 import './WeatherIcon.css';
 
-export default function WeatherIcon({ weather }) {
+export default function WeatherIcon({ weather, onClick }) {
   return (
-    <div className="IconWrapper">
+    <div className="IconWrapper" onClick={() => onClick()}>
       <div>{weather.main.temp + '°C'}</div>
       <img
+        className="ArrowIcon"
         src={require('../../svg/' + weather.weather[0].icon + '.svg')}
         alt={weather.weather[0].main}
-        height={50}
-        width={50}
       />
       <div>
         {weather.dt_txt.slice(0, 10) + ' '}

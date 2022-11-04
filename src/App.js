@@ -6,6 +6,7 @@ import {
   getCurrentWeather,
   getForecast,
   getForecastStatus,
+  getIndex,
 } from './features/weatherSlice';
 import Selector from './components/Selector/Selector';
 import Input from './components/Input/Input';
@@ -19,7 +20,8 @@ function App() {
   const geoAPI = useSelector(getCities);
   const chosenCity = useSelector(getChosenCity);
   const currentWeather = useSelector(getCurrentWeather);
-  const forecastWeather = useSelector(getForecast);
+  const forecasts = useSelector(getForecast);
+  const getI = useSelector(getIndex);
 
   const getStatus = useSelector(getGeoStatus);
   const currentWeatherStatus = useSelector(getCurrentStatus);
@@ -31,7 +33,7 @@ function App() {
     <div>
       <h1>Weather App</h1>
       <div className="Wrapper">
-        <div>
+        <div style={{ margin: '5px' }}>
           <Input
             placeholder="City name"
             setCityInput={setCityInput}
@@ -39,16 +41,27 @@ function App() {
           />
           {getStatus === 'succeeded' && <Selector cityData={geoAPI} />}
         </div>
-        {forecastStatus === 'succeeded' && currentWeatherStatus === 'succeeded' && (
-          <div className="WeatherWrapper">
-            <h1>{chosenCity.name}</h1>
-            <h2>Current temperature: {currentWeather.main.temp} °C</h2>
-            <div>
-              <h2>Temperature forecast</h2>
-              <Slider />
+        {forecastStatus === 'succeeded' &&
+          currentWeatherStatus === 'succeeded' &&
+          (getI === 0 ? (
+            <div className="WeatherWrapper">
+              <h1>{chosenCity.name}</h1>
+              <h2>Current temperature: {currentWeather.main.temp} °C</h2>
+              <div>
+                <h2>Temperature forecast</h2>
+                <Slider />
+              </div>
             </div>
-          </div>
-        )}
+          ) : (
+            <div className="WeatherWrapper">
+              <h1>{chosenCity.name}</h1>
+              <h2>Current temperature: {forecasts.list[getI].main.temp} °C</h2>
+              <div>
+                <h2>Temperature forecast</h2>
+                <Slider />
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );
