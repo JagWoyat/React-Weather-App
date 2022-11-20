@@ -13,6 +13,10 @@ export default function Slider() {
 
   const translateV = 250;
 
+  const buttonStyle = {
+    backgroundImage: `url(${arrow})`,
+  };
+
   return (
     <div className="SliderWrapper">
       <button
@@ -20,7 +24,7 @@ export default function Slider() {
         onClick={() => {
           setX(getX + translateV);
         }}
-        style={{ backgroundImage: `url(${arrow})` }}
+        style={{ ...buttonStyle, transform: 'rotateZ(-90deg)' }}
         alt={'Arrow button'}
       />
       <ul
@@ -31,8 +35,8 @@ export default function Slider() {
           forecasts.list.map((forecast, id) => (
             <li
               onClick={() => {
-                setIndex(id + 1);
-                dispatch(changeIndex(index));
+                setIndex(id);
+                dispatch(changeIndex(id));
               }}
             >
               <WeatherIcon weather={forecast} key={id} />
@@ -45,7 +49,7 @@ export default function Slider() {
         onClick={() => {
           setX(getX - translateV);
         }}
-        style={{ backgroundImage: `url(${arrow})` }}
+        style={{ ...buttonStyle, transform: 'rotateZ(90deg)' }}
         alt={'Arrow button'}
       />
     </div>

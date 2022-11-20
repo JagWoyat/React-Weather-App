@@ -43,7 +43,7 @@ function App() {
         </div>
         {forecastStatus === 'succeeded' &&
           currentWeatherStatus === 'succeeded' &&
-          (getI === 0 ? (
+          (getI === -1 ? (
             <div className="WeatherWrapper">
               <h1>{chosenCity.name}</h1>
               <h2>Current temperature: {currentWeather.main.temp} °C</h2>

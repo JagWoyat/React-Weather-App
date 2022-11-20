@@ -1,8 +1,8 @@
 import './WeatherIcon.css';
 
-export default function WeatherIcon({ weather, onClick }) {
+export default function WeatherIcon({ weather }) {
   return (
-    <div className="IconWrapper" onClick={() => onClick()}>
+    <div className="IconWrapper">
       <div>{weather.main.temp + '°C'}</div>
       <img
         className="ArrowIcon"

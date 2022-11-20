@@ -1,6 +1,6 @@
 .SliderWrapper {
     display: grid;
-    grid-template-columns: 40px 500px 40px;
+    grid-template-columns: 20px 506px 20px;
 }
 
 .Slider {
@@ -13,11 +13,19 @@
 }
 
 .Butt {
-    width: 70px;
-    height: 130px;
+    width: 130px;
+    height: 70px;
+    top: 30px;
+    right: 30px;
     position: relative;
+    background-repeat: no-repeat;
+    background-position: 50%;
     z-index: 9999;
     border: none;
-    background-repeat: no-repeat;
-    background-position: 20%;
+    opacity: 0%;
+
+}
+
+.Butt:hover {
+    opacity: 100%;
 }
