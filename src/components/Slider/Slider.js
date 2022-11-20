@@ -20,7 +20,7 @@ export default function Slider() {
   return (
     <div className="SliderWrapper">
       <button
-        className="Butt"
+        className="SliderButton"
         onClick={() => {
           setX(getX + translateV);
         }}
@@ -45,7 +45,7 @@ export default function Slider() {
         )}
       </ul>
       <button
-        className="Butt"
+        className="SliderButton"
         onClick={() => {
           setX(getX - translateV);
         }}
