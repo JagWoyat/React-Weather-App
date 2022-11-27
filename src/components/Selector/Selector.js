@@ -1,17 +1,37 @@
-import { useDispatch } from 'react-redux';
-import { addCity, fetchCurrentWeather, fetchForecastWeather } from '../../features/weatherSlice';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addCity,
+  fetchCurrentWeather,
+  fetchForecastWeather,
+  getChosenCity,
+} from '../../features/weatherSlice';
 import Button from '../Button/Button';
 import './Selector.css';
 
 function Option({ id, name, country, state, lat, lon }) {
   const dispatch = useDispatch();
 
+  const chosenCity = useSelector(getChosenCity);
+
+  const [wrapperStyle, setWrapperStyle] = useState('OptionWrapper');
+
+  function setWrapperStyleF(name) {
+    if (wrapperStyle !== name) {
+      setWrapperStyle(name);
+    }
+  }
+
+  chosenCity.id === id
+    ? setWrapperStyleF('ChosenOptionWrapper')
+    : setWrapperStyleF('OptionWrapper');
+
   return (
-    <div className="OptionWrapper">
-      <h4>City name: {name}</h4>
-      <h5>Country: {country}</h5>
-      <h5>State: {state}</h5>
-      <div className="Button">
+    <>
+      <div className={wrapperStyle}>
+        <h4>City name: {name}</h4>
+        <h5>Country: {country}</h5>
+        <h5>State: {state}</h5>
         <Button
           onClick={() => {
             dispatch(
@@ -41,7 +61,7 @@ function Option({ id, name, country, state, lat, lon }) {
           Select
         </Button>
       </div>
-    </div>
+    </>
   );
 }
 

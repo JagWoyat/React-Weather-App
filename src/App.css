@@ -1,3 +1,19 @@
+.AppWrapper {
+    width: 80rem;
+    margin-inline: auto;
+}
+
+.PrimaryHeader{
+    background: #444;
+    color: #fff;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.Header{ 
+    margin: 0px;
+}
+
 .Wrapper {
     display: grid;
     grid-template-columns: 2fr 3fr;
@@ -6,6 +22,7 @@
 .WeatherWrapper {
     display: grid;
     grid-template-rows: 2fr 2fr 5fr;
+    justify-content: center;
     width: 600px;
     height: 500px;
     border: 2px solid black;

@@ -1,16 +1,28 @@
 .OptionWrapper {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     width: 650px;
     height: 60px;
-    margin: 0px;
-    padding: 5px;
-    border: 1px solid black;
+    margin: 2px;
+    padding: 0 15px 0 15px;
+    border: 2px solid #444;
 }
 
-.Button {
+.OptionWrapper > * {
+    flex: 0px;
+}
+
+.ChosenOptionWrapper {
     display: flex;
-    align-self: center;
-    bottom: 5px;
-    right: 5px;
+    justify-content: space-between;
+    align-items: center;
+    width: 650px;
+    height: 60px;
+    margin: 2px;
+    padding: 0 14px 0 14px;
+    border: 3px solid purple;
+}
+
+.ChosenOptionWrapper > * {
+    flex: 0px;
 }
