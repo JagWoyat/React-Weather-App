@@ -9,7 +9,6 @@ export default function Slider() {
   const forecasts = useSelector(getForecast);
   const dispatch = useDispatch();
   const [getX, setX] = useState(0);
-  const [index, setIndex] = useState(0);
 
   const translateV = 250;
 
@@ -22,7 +21,7 @@ export default function Slider() {
       <button
         className="SliderButton"
         onClick={() => {
-          setX(getX + translateV);
+          if (getX < 0) setX(getX + translateV);
         }}
         style={{ ...buttonStyle, transform: 'rotateZ(-90deg)' }}
         alt={'Arrow button'}
@@ -35,7 +34,6 @@ export default function Slider() {
           forecasts.list.map((forecast, id) => (
             <li
               onClick={() => {
-                setIndex(id);
                 dispatch(changeIndex(id));
               }}
             >
@@ -47,7 +45,7 @@ export default function Slider() {
       <button
         className="SliderButton"
         onClick={() => {
-          setX(getX - translateV);
+          if (getX > -3750) setX(getX - translateV);
         }}
         style={{ ...buttonStyle, transform: 'rotateZ(90deg)' }}
         alt={'Arrow button'}
