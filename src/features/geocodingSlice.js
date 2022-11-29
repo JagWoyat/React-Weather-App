@@ -9,7 +9,7 @@ const initialState = {
 
 export const fetchCities = createAsyncThunk('/city/cities', async (city) => {
   const response = await axios.get(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=69a56e48c6736c1d1e0289481de1b392`,
+    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=69a56e48c6736c1d1e0289481de1b392`,
   );
   return response.data;
 });
