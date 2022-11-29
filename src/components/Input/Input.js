@@ -2,20 +2,16 @@ import './Input.css';
 import Icon from '../Icon/Icon';
 import glass from './magnifying-glass.svg';
 
-export default function Input({ placeholder, setCityInput, func }) {
+export default function Input({ placeholder, setCityInput, func, value }) {
   return (
-    <div className="InputWrapper">
+    <form className="InputWrapper" onSubmit={func}>
       <input
+        value={value}
         className="input"
         placeholder={placeholder}
         onChange={(event) => setCityInput(event.target.value)}
-        onKeyPress={(event) => {
-          if (event.code === 'Enter') {
-            func();
-          }
-        }}
       />
       <Icon icon={glass} onClick={func} />
-    </div>
+    </form>
   );
 }

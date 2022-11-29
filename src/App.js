@@ -3,7 +3,6 @@ import { fetchCities, getCities, getGeoStatus } from './features/geocodingSlice'
 import {
   getChosenCity,
   getCurrentStatus,
-  getCurrentWeather,
   getForecast,
   getForecastStatus,
   getIndex,
@@ -20,7 +19,6 @@ function App() {
 
   const geoAPI = useSelector(getCities);
   const chosenCity = useSelector(getChosenCity);
-  const currentWeather = useSelector(getCurrentWeather);
   const forecasts = useSelector(getForecast);
   const getI = useSelector(getIndex);
 
@@ -41,9 +39,14 @@ function App() {
         <div className="Wrapper">
           <div style={{ margin: '5px' }}>
             <Input
+              value={cityInput}
               placeholder="City name"
               setCityInput={setCityInput}
-              func={() => dispatch(fetchCities(cityInput))}
+              func={(e) => {
+                e.preventDefault();
+                dispatch(fetchCities(cityInput));
+                setCityInput('');
+              }}
             />
             {getStatus === 'succeeded' && <Selector cityData={geoAPI} />}
           </div>
@@ -63,11 +66,6 @@ function App() {
             ) : (
               <div className="WeatherWrapper">
                 <h1>{chosenCity.name}</h1>
-                {/* <h2>
-                Temperature on {forecasts.list[getI].dt_txt.slice(0, 10) + ' '}
-                {forecasts.list[getI].dt_txt.slice(11, 19) + ' '}: {forecasts.list[getI].main.temp}{' '}
-                °C
-              </h2> */}
                 <div>
                   <WeatherIcon weather={forecasts.list[getI]} selected />
                 </div>

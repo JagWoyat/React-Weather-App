@@ -1,5 +1,6 @@
 .OptionWrapper {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 650px;
     height: 60px;
