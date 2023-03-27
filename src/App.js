@@ -40,7 +40,7 @@ function App() {
           <div style={{ margin: '5px' }}>
             <Input
               value={cityInput}
-              placeholder="City name"
+              placeholder="City Name"
               setCityInput={setCityInput}
               func={(e) => {
                 e.preventDefault();
