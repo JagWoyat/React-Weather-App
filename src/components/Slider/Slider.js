@@ -45,7 +45,7 @@ export default function Slider() {
       <button
         className="SliderButton"
         onClick={() => {
-          if (getX > -3750) setX(getX - translateV);
+          if (getX > -3500) setX(getX - translateV);
         }}
         style={{ ...buttonStyle, transform: 'rotateZ(90deg)' }}
         alt={'Arrow button'}

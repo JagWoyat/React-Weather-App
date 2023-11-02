@@ -1,36 +1,127 @@
 .AppWrapper {
-    width: 80rem;
-    margin-inline: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  margin-inline: auto;
 }
 
-.PrimaryHeader{
-    background: #444;
-    color: #fff;
-    margin-bottom: 30px;
-    padding: 10px;
+.PrimaryHeader {
+  background: #444;
+  color: #fff;
+  margin-bottom: 30px;
+  padding: 10px;
 }
 
-.Header{ 
-    margin: 0px;
+.Header {
+  margin: 0px;
+  font-size: 3rem;
 }
 
 .Wrapper {
-    display: grid;
-    grid-template-columns: 2fr 3fr;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
 }
 
 .WeatherWrapper {
-    display: grid;
-    grid-template-rows: 2fr 2fr 5fr;
-    justify-content: center;
-    width: 600px;
-    height: 500px;
-    border: 2px solid black;
-    box-shadow: 5px 10px #888888;
-    overflow:hidden; 
+  display: grid;
+  grid-template-rows: 2fr 2fr 5fr;
+  justify-content: center;
+  width: 600px;
+  height: 500px;
+  border: 2px solid black;
+  background-color: white;
+  box-shadow: 5px 10px #888888;
+  overflow: hidden;
 }
 
 .ForecastWrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.DayBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(var(--day-color), white);
+}
+
+.NightBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(var(--clouds), var(--night-color));
+}
+
+/* .ScatteredCloudsDay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(var(--clouds), var(--day-color));
+}
+
+.ScatteredCloudsNight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(var(--clouds), var(--night-color));
+} */
+
+.CloudyDay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(var(--clouds) 60%, var(--day-color));
+}
+
+.CloudyNight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(var(--clouds) 60%, var(--night-color));
+}
+
+.RainyDay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    color-mix(in srgb, var(--clouds) 75%, var(--day-color)) 60%,
+    var(--rain)
+  );
+}
+
+.RainyNight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    color-mix(in srgb, var(--clouds) 75%, var(--night-color)) 60%,
+    var(--rain)
+  );
 }

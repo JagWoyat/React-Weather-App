@@ -10,7 +10,7 @@ import {
 import Selector from './components/Selector/Selector';
 import Input from './components/Input/Input';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Slider from './components/Slider/Slider';
 import WeatherIcon from './components/Slider/WeatherIcon';
 
@@ -28,26 +28,64 @@ function App() {
 
   const [cityInput, setCityInput] = useState('');
 
+  const [backgroudStyles, setBackgroundStyles] = useState('DayBackground');
+
+  useEffect(() => {
+    console.log(forecasts.list[getI].weather[0].icon);
+    switch (forecasts.list[getI].weather[0].icon) {
+      case '01d':
+        setBackgroundStyles('DayBackground');
+        break;
+      case '01n':
+        setBackgroundStyles('NightBackground');
+        break;
+      case '02d':
+      case '03d':
+      case '04d':
+        setBackgroundStyles('CloudyDay');
+        break;
+      case '02n':
+      case '03n':
+      case '04n':
+        setBackgroundStyles('CloudyNight');
+        break;
+      case '09d':
+      case '10d':
+      case '11d':
+        setBackgroundStyles('RainyDay');
+        break;
+      case '09n':
+      case '10n':
+      case '11n':
+        setBackgroundStyles('RainyNight');
+        break;
+      default:
+        setBackgroundStyles('DayBackground');
+        break;
+    }
+  }, [getI]);
+
   return (
     <>
       <div className="PrimaryHeader">
         <div className="AppWrapper">
           <h1 className="Header">Weather App</h1>
+          <Input
+            value={cityInput}
+            placeholder="City Name"
+            setCityInput={setCityInput}
+            func={(e) => {
+              e.preventDefault();
+              dispatch(fetchCities(cityInput));
+              setCityInput('');
+            }}
+          />
         </div>
       </div>
       <div className="AppWrapper">
+        <div className={backgroudStyles} />
         <div className="Wrapper">
           <div style={{ margin: '5px' }}>
-            <Input
-              value={cityInput}
-              placeholder="City Name"
-              setCityInput={setCityInput}
-              func={(e) => {
-                e.preventDefault();
-                dispatch(fetchCities(cityInput));
-                setCityInput('');
-              }}
-            />
             {getStatus === 'succeeded' && <Selector cityData={geoAPI} />}
           </div>
           {forecastStatus === 'succeeded' &&

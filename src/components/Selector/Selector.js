@@ -67,7 +67,7 @@ function Option({ id, name, country, state, lat, lon }) {
 
 export default function Selector({ cityData }) {
   return (
-    <div>
+    <div className="SelectorWrapper">
       {cityData.map((data) => (
         <Option
           id={data.id}
