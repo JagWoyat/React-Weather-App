@@ -1,7 +1,6 @@
 .SliderWrapper {
   display: grid;
   grid-template-columns: 20px 506px 20px;
-  background-color: white;
 }
 
 .Slider {

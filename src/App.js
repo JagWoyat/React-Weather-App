@@ -28,42 +28,44 @@ function App() {
 
   const [cityInput, setCityInput] = useState('');
 
-  const [backgroudStyles, setBackgroundStyles] = useState('DayBackground');
+  const [backgroudStyles, setBackgroundStyles] = useState('Default');
 
   useEffect(() => {
-    console.log(forecasts.list[getI].weather[0].icon);
-    switch (forecasts.list[getI].weather[0].icon) {
-      case '01d':
-        setBackgroundStyles('DayBackground');
-        break;
-      case '01n':
-        setBackgroundStyles('NightBackground');
-        break;
-      case '02d':
-      case '03d':
-      case '04d':
-        setBackgroundStyles('CloudyDay');
-        break;
-      case '02n':
-      case '03n':
-      case '04n':
-        setBackgroundStyles('CloudyNight');
-        break;
-      case '09d':
-      case '10d':
-      case '11d':
-        setBackgroundStyles('RainyDay');
-        break;
-      case '09n':
-      case '10n':
-      case '11n':
-        setBackgroundStyles('RainyNight');
-        break;
-      default:
-        setBackgroundStyles('DayBackground');
-        break;
+    if (forecasts.length !== 0) {
+      console.log(forecasts.list[getI].weather[0].icon);
+      switch (forecasts.list[getI].weather[0].icon) {
+        case '01d':
+          setBackgroundStyles('DayBackground');
+          break;
+        case '01n':
+          setBackgroundStyles('NightBackground');
+          break;
+        case '02d':
+        case '03d':
+        case '04d':
+          setBackgroundStyles('CloudyDay');
+          break;
+        case '02n':
+        case '03n':
+        case '04n':
+          setBackgroundStyles('CloudyNight');
+          break;
+        case '09d':
+        case '10d':
+        case '11d':
+          setBackgroundStyles('RainyDay');
+          break;
+        case '09n':
+        case '10n':
+        case '11n':
+          setBackgroundStyles('RainyNight');
+          break;
+        default:
+          setBackgroundStyles('Default');
+          break;
+      }
     }
-  }, [getI]);
+  }, [getI, forecastStatus]);
 
   return (
     <>
