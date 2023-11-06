@@ -69,7 +69,7 @@ function App() {
 
   return (
     <>
-      <div className="PrimaryHeader">
+      <header className="PrimaryHeader">
         <div className="AppWrapper">
           <h1 className="Header">Weather App</h1>
           <Input
@@ -83,8 +83,8 @@ function App() {
             }}
           />
         </div>
-      </div>
-      <div className="AppWrapper">
+      </header>
+      <section className="AppWrapper">
         <div className={backgroudStyles} />
         <div className="Wrapper">
           <div style={{ margin: '5px' }}>
@@ -94,29 +94,29 @@ function App() {
             currentWeatherStatus === 'succeeded' &&
             (getI === -1 || !getI ? (
               <div className="WeatherWrapper">
-                <h1>{chosenCity.name}</h1>
+                <h2>{chosenCity.name}</h2>
                 <div>
                   <WeatherIcon weather={forecasts.list[getI]} selected />
                 </div>
                 <div>
-                  <h2>Temperature forecast</h2>
+                  <h3>Temperature forecast</h3>
                   <Slider />
                 </div>
               </div>
             ) : (
               <div className="WeatherWrapper">
-                <h1>{chosenCity.name}</h1>
+                <h2>{chosenCity.name}</h2>
                 <div>
                   <WeatherIcon weather={forecasts.list[getI]} selected />
                 </div>
                 <div>
-                  <h2>Temperature forecast</h2>
+                  <h3>Temperature forecast</h3>
                   <Slider />
                 </div>
               </div>
             ))}
         </div>
-      </div>
+      </section>
     </>
   );
 }

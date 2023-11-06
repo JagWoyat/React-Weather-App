@@ -1,6 +1,8 @@
 .SliderWrapper {
   display: grid;
-  grid-template-columns: 20px 506px 20px;
+  width: 40vw;
+  grid-template-columns: 2vw 36vw 2vw; /*20px 506px 20px;*/
+  /* overflow: hidden; */
 }
 
 .Slider {
@@ -8,24 +10,59 @@
   flex-direction: row;
   justify-content: space-between;
   position: relative;
-  left: -1rem;
+  /* left: -1rem; */
   list-style-type: none;
   z-index: 0;
 }
 
-.SliderButton {
-  width: 130px;
-  height: 70px;
-  top: 30px;
-  right: 55px;
+.SliderButtonLeft {
+  width: 6rem;
+  height: 6rem;
+  top: 1rem;
+  transform: rotateZ(-90deg);
   position: relative;
   background-repeat: no-repeat;
   background-position: 50%;
   z-index: 9999;
   border: none;
   opacity: 20%;
+  cursor: pointer;
 }
 
-.SliderButton:hover {
+.SliderButtonLeft:hover {
   opacity: 100%;
+}
+
+.SliderButtonRight {
+  width: 6rem;
+  height: 6rem;
+  top: 1rem;
+  right: 3rem;
+  transform: rotateZ(90deg);
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  z-index: 9999;
+  border: none;
+  opacity: 20%;
+  cursor: pointer;
+}
+
+.SliderButtonRight:hover {
+  opacity: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .SliderWrapper {
+    display: grid;
+    width: 96vw;
+    grid-template-columns: 3.84vw 88.32vw 3.84vw; /*20px 506px 20px;*/
+  }
+  .Wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .WeatherWrapper {
+    width: 96vw;
+  }
 }

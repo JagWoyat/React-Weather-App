@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 650px;
+  width: 40vw;
   height: 60px;
   margin: 2px;
   padding: 0 15px 0 15px;
@@ -22,7 +22,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 650px;
+  width: 40vw;
   height: 60px;
   margin: 2px;
   padding: 0 14px 0 14px;
@@ -42,4 +42,16 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+}
+
+@media screen and (max-width: 800px) {
+  .SelectorWrapper {
+    width: 100%;
+  }
+  .OptionWrapper {
+    width: 100vw;
+  }
+  .ChosenOptionWrapper {
+    width: 100vw;
+  }
 }

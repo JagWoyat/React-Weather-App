@@ -19,11 +19,11 @@ export default function Slider() {
   return (
     <div className="SliderWrapper">
       <button
-        className="SliderButton"
+        className="SliderButtonLeft"
         onClick={() => {
           if (getX < 0) setX(getX + translateV);
         }}
-        style={{ ...buttonStyle, transform: 'rotateZ(-90deg)' }}
+        style={{ ...buttonStyle }}
         alt={'Arrow button'}
       />
       <ul
@@ -43,11 +43,11 @@ export default function Slider() {
         )}
       </ul>
       <button
-        className="SliderButton"
+        className="SliderButtonRight"
         onClick={() => {
           if (getX > -3500) setX(getX - translateV);
         }}
-        style={{ ...buttonStyle, transform: 'rotateZ(90deg)' }}
+        style={{ ...buttonStyle }}
         alt={'Arrow button'}
       />
     </div>
