@@ -65,7 +65,7 @@ function App() {
           break;
       }
     }
-  }, [getI, forecastStatus]);
+  }, [getI, forecastStatus, forecasts.list, forecasts.length]);
 
   return (
     <>
